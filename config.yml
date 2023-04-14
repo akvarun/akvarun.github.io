@@ -1,8 +1,8 @@
-baseURL: "" 
+baseURL: "https://akvarun.github.io/'" 
 languageCode: en-us
 title: Varun 
 theme: PaperMod 
-
+enableEmoji: true
 
 menu:
   main:
