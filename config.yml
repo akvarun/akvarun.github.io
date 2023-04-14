@@ -1,12 +1,42 @@
-baseURL: "https://akvarun.github.io/'" 
-languageCode: en-us
-title: Varun 
-theme: PaperMod 
+baseURL: 'https://akvarun.github.io/'
+defaultContentLanguage: en
+languageCode: en
 enableEmoji: true
+title: Varun A K
+theme: PaperMod
+
+env: production
+
+enableRobotsTXT: true
+
+  
+params:
+  showToc: false
+  TocOpen: false
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  hideMeta: false
+  profileMode:
+    enabled: true
+    title: Bonjour.
+    
+
+  socialIcons:
+    - name: Github
+      url: 'https://github.com/akvarun'
+    - name: Email
+      url: 'mailto:akvarun08@gmail.com'
 
 menu:
   main:
-    - identifier: categories 
-      name: categories
-      url: /categories/
-      weight: 10 
+    - identifier: first
+      name: Memoir
+      url: /first
+      weight: 1
+
+    - identifier: notes
+      name: Notes   
+      url: /notes/
+      weight: 2
+
+    
