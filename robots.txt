@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://akvarun.github.io/sitemap.xml

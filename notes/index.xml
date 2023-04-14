@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Notes on Varun A K</title>
+    <link>https://akvarun.github.io/notes/</link>
+    <description>Recent content in Notes on Varun A K</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language><atom:link href="https://akvarun.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cybher physical system</title>
+      <link>https://akvarun.github.io/notes/cps/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://akvarun.github.io/notes/cps/</guid>
+      <description>Cyber-physical systems combine physical and computational components to interact with the real world in real-time. They improve efficiency, safety, and reliability in domains like healthcare, transportation, and manufacturing. CPS require expertise in computer science, control theory, and mechanical engineering.</description>
+    </item>
+    
+    <item>
+      <title>Distributed System</title>
+      <link>https://akvarun.github.io/notes/distributed/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://akvarun.github.io/notes/distributed/</guid>
+      <description>A distributed system is a network of independent computers that work together by dividing tasks and coordinating actions through communication. It is used in various applications, such as e-commerce, social networks, and online gaming, but it can be challenging to design and implement due to the need for efficient communication, synchronization, and fault-tolerance..</description>
+    </item>
+    
+  </channel>
+</rss>
