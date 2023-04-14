@@ -1,0 +1,12 @@
+baseURL: "" 
+languageCode: en-us
+title: Varun 
+theme: PaperMod 
+
+
+menu:
+  main:
+    - identifier: categories 
+      name: categories
+      url: /categories/
+      weight: 10 
