@@ -12,24 +12,8 @@
       <pubDate>Fri, 14 Apr 2023 19:41:27 +0530</pubDate>
       
       <guid>https://akvarun.github.io/first/</guid>
-      <description><descprition> </item>
-    
-    <item>
-      <title>Cybher physical system</title>
-      <link>https://akvarun.github.io/notes/cps/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://akvarun.github.io/notes/cps/</guid>
-      <description>Cyber-physical systems combine physical and computational components to interact with the real world in real-time. They improve efficiency, safety, and reliability in domains like healthcare, transportation, and manufacturing. CPS require expertise in computer science, control theory, and mechanical engineering.</description>
-    </item>
-    
-    <item>
-      <title>Distributed System</title>
-      <link>https://akvarun.github.io/notes/distributed/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://akvarun.github.io/notes/distributed/</guid>
-      <description>A distributed system is a network of independent computers that work together by dividing tasks and coordinating actions through communication. It is used in various applications, such as e-commerce, social networks, and online gaming, but it can be challenging to design and implement due to the need for efficient communication, synchronization, and fault-tolerance..</description>
+      <description>Hi, I&amp;rsquo;m Varun AK! I&amp;rsquo;m currently a student of Computer Science and Engineering, and I&amp;rsquo;m passionate about all things related to technology. From a young age, I&amp;rsquo;ve always been fascinated by how computers work and how they can be used to solve complex problems.
+During my studies, I&amp;rsquo;ve gained valuable experience in programming, web development, and database management. I&amp;rsquo;m always eager to learn new technologies and explore different areas within the field.</description>
     </item>
     
   </channel>
