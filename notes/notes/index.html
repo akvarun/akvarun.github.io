@@ -98,8 +98,8 @@
   "keywords": [
     
   ],
-  "articleBody": "Sensors and actuators  sensors - device that measures physical quantity actuators - alters the physical quantity sensors produce a voltage that is proportional to the physical quantity voltage is converted to physical value by the ADC - analog to digital converter  construct models of sensors  linearity bias dynamic range quantization noise sampling  linear and affine models  physical quantity x(t) at time t sensor value = f(x(t)) where f: R- R : x(t) belongs to R every linear function is an affine function with a constant a belongs to R and bias b belongs to R f(x(t)) = ax(t) + b a linear function is an affine function (when b=0) i.e when the origin is 0 but not vice versa the proportionality constant a gives the sensitivity of the sensor sensors are have a range for example temperature sensor - -50 degree to 50 degree  affine function model augmentation f(x(t))  = ax(t) + b if L = aH + b if x(t)  H = aL + b if x(t)  dynamic range  the precision p of a sensor is the smallest absolute difference between two values of a physical quantity whose sensor values are distinguishable D = H - L / p example H = 30 ; L = 20 ; p = 1 Dynamic range D = 30 - 20 / 1 = 10 /1 = 10 the dynamic range is 10 for the above example but what if the precision is 0.5 10 / 0.5 = 20 hence depending on the value of the precision the dynamic range changes  quantization  a physical quantity is represented by a n bit numbers so a sensor can produce only a 2^n distinct numbers the sensor value maybe a real number but the sensor must pick a value from the 2^n numbers this is called quantization example 3 bit sensor where the high value is 1 H = 1 and the low value is L = 0 there can be 2^n = 2^3 = 8 distinct values so the precision can be 1/8 extreme form of quantization is setting a threshold for values i.e for example analog comparator if x(t) else 1 this can be used in microprocessors where the GPIO pins get 0s and 1s as the input  Noise  part of signal that we do not want n(t)= x'(t) - x(t) x'(t) = x(t) + n(t) if the sample rate is high enough the noise can be reduced and this is called as oversampling root mean square RMS = avg value of the n(t)^2  sampling  digital sensor will sample the physical values in a particular points in the time the sampling rate is 1/T samples per second which is measured in terms of hertz Hz smaller the sampling rate more costly to provide more bits in an ADC. faster ADC produce smaller bits hence having either higher quantization error or smaller range an important concern while sampling signals is that same function x when sampled will yeild the same signal S, this is called aliasing  ",
-  "wordCount" : "512",
+  "articleBody": "Sensors and actuators  sensors - device that measures physical quantity actuators - alters the physical quantity sensors produce a voltage that is proportional to the physical quantity voltage is converted to physical value by the ADC - analog to digital converter  construct models of sensors  linearity bias dynamic range quantization noise sampling  linear and affine models  physical quantity x(t) at time t sensor value = f(x(t)) where f: R- R : x(t) belongs to R every linear function is an affine function with a constant a belongs to R and bias b belongs to R f(x(t)) = ax(t) + b a linear function is an affine function (when b=0) i.e when the origin is 0 but not vice versa the proportionality constant a gives the sensitivity of the sensor sensors are have a range for example temperature sensor - -50 degree to 50 degree  affine function model augmentation f(x(t))  = ax(t) + b if L = aH + b if x(t)  H = aL + b if x(t)  dynamic range  the precision p of a sensor is the smallest absolute difference between two values of a physical quantity whose sensor values are distinguishable D = H - L / p example H = 30 ; L = 20 ; p = 1 Dynamic range D = 30 - 20 / 1 = 10 /1 = 10 the dynamic range is 10 for the above example but what if the precision is 0.5 10 / 0.5 = 20 hence depending on the value of the precision the dynamic range changes  quantization  a physical quantity is represented by a n bit numbers so a sensor can produce only a 2^n distinct numbers the sensor value maybe a real number but the sensor must pick a value from the 2^n numbers this is called quantization example 3 bit sensor where the high value is 1 H = 1 and the low value is L = 0 there can be 2^n = 2^3 = 8 distinct values so the precision can be 1/8 extreme form of quantization is setting a threshold for values i.e for example analog comparator if x(t) else 1 this can be used in microprocessors where the GPIO pins get 0s and 1s as the input  Noise  part of signal that we do not want n(t)= x'(t) - x(t) x'(t) = x(t) + n(t) if the sample rate is high enough the noise can be reduced and this is called as oversampling root mean square RMS = avg value of the n(t)^2  sampling  digital sensor will sample the physical values in a particular points in the time the sampling rate is 1/T samples per second which is measured in terms of hertz Hz smaller the sampling rate more costly to provide more bits in an ADC. faster ADC produce smaller bits hence having either higher quantization error or smaller range an important concern while sampling signals is that same function x when sampled will yeild the same signal S, this is called aliasing  harmonic distortion  non linearity in the range of sensors and actuators sensitivity of the sensors and the actuators are nyquist sampling theorem = **fs = 2*fmax **  common sensors  measuring position and velocity measuring rotation measuring sound  microphone electromagnetic induction capacitance pizo electric effect    other sensors  light emitting diodes motor control  Embedded processors types of processors  second third  ",
+  "wordCount" : "570",
   "inLanguage": "en",
   "datePublished": "0001-01-01T00:00:00Z",
   "dateModified": "0001-01-01T00:00:00Z",
@@ -257,6 +257,36 @@
 <li>faster ADC produce smaller bits hence having either higher quantization error or smaller range</li>
 <li>an important concern while sampling signals is that same function x when sampled will yeild the same signal S, this is called
 aliasing</li>
+</ul>
+<h3 id="harmonic-distortion">harmonic distortion<a hidden class="anchor" aria-hidden="true" href="#harmonic-distortion">#</a></h3>
+<ul>
+<li>non linearity in the range of sensors and actuators</li>
+<li>sensitivity of the sensors and the actuators are
+<em><strong>nyquist sampling theorem</strong></em>  = **fs &gt;= 2*fmax **</li>
+</ul>
+<h3 id="common-sensors">common sensors<a hidden class="anchor" aria-hidden="true" href="#common-sensors">#</a></h3>
+<ul>
+<li>measuring position and velocity</li>
+<li>measuring rotation</li>
+<li>measuring sound
+<ol>
+<li>microphone</li>
+<li>electromagnetic induction</li>
+<li>capacitance</li>
+<li>pizo electric effect</li>
+</ol>
+</li>
+</ul>
+<h3 id="other-sensors">other sensors<a hidden class="anchor" aria-hidden="true" href="#other-sensors">#</a></h3>
+<ul>
+<li>light emitting diodes</li>
+<li>motor control</li>
+</ul>
+<h1 id="embedded-processors">Embedded processors<a hidden class="anchor" aria-hidden="true" href="#embedded-processors">#</a></h1>
+<h2 id="types-of-processors">types of processors<a hidden class="anchor" aria-hidden="true" href="#types-of-processors">#</a></h2>
+<ul>
+<li>second</li>
+<li>third</li>
 </ul>
 
 
