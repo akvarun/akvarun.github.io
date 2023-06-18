@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Varun A K</title>
+<meta name="keywords" content="">
+<meta name="description" content="Distrubuted systems - Notes Unit 1 A Taxonomy of Distributed Systems - Models of computation: shared memory and message passing systems, synchronous and asynchronous systems. Communication in Distributed Systems: Remote Procedure Calls, Message Oriented Communications and implementations over a simple distributed system.
+Unit 2 Global state and snapshot algorithms. Logical time and event ordering, clock synchronization, Distributed mutual exclusion, Group based Mutual Exclusion, leader election, concurrency control, deadlock detection, termination detection, implementations over a simple distributed system.">
+<meta name="author" content="">
+<link rel="canonical" href="https://akvarun.github.io/notes/exam-prep/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3613efbd0b1772781e8f49935e973cae632a7f61471c05b17be155505ccf87b5.css" integrity="sha256-NhPvvQsXcngej0mTXpc8rmMqf2FHHAWxe&#43;FVUFzPh7U=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://akvarun.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://akvarun.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://akvarun.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://akvarun.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://akvarun.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="Distrubuted systems - Notes Unit 1 A Taxonomy of Distributed Systems - Models of computation: shared memory and message passing systems, synchronous and asynchronous systems. Communication in Distributed Systems: Remote Procedure Calls, Message Oriented Communications and implementations over a simple distributed system.
+Unit 2 Global state and snapshot algorithms. Logical time and event ordering, clock synchronization, Distributed mutual exclusion, Group based Mutual Exclusion, leader election, concurrency control, deadlock detection, termination detection, implementations over a simple distributed system." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://akvarun.github.io/notes/exam-prep/" /><meta property="article:section" content="notes" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Distrubuted systems - Notes Unit 1 A Taxonomy of Distributed Systems - Models of computation: shared memory and message passing systems, synchronous and asynchronous systems. Communication in Distributed Systems: Remote Procedure Calls, Message Oriented Communications and implementations over a simple distributed system.
+Unit 2 Global state and snapshot algorithms. Logical time and event ordering, clock synchronization, Distributed mutual exclusion, Group based Mutual Exclusion, leader election, concurrency control, deadlock detection, termination detection, implementations over a simple distributed system."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Notes",
+      "item": "https://akvarun.github.io/notes/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "https://akvarun.github.io/notes/exam-prep/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "Distrubuted systems - Notes Unit 1 A Taxonomy of Distributed Systems - Models of computation: shared memory and message passing systems, synchronous and asynchronous systems. Communication in Distributed Systems: Remote Procedure Calls, Message Oriented Communications and implementations over a simple distributed system.\nUnit 2 Global state and snapshot algorithms. Logical time and event ordering, clock synchronization, Distributed mutual exclusion, Group based Mutual Exclusion, leader election, concurrency control, deadlock detection, termination detection, implementations over a simple distributed system.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Distrubuted systems - Notes Unit 1 A Taxonomy of Distributed Systems - Models of computation: shared memory and message passing systems, synchronous and asynchronous systems. Communication in Distributed Systems: Remote Procedure Calls, Message Oriented Communications and implementations over a simple distributed system.\nUnit 2 Global state and snapshot algorithms. Logical time and event ordering, clock synchronization, Distributed mutual exclusion, Group based Mutual Exclusion, leader election, concurrency control, deadlock detection, termination detection, implementations over a simple distributed system.\nUnit 3 Consistency and Replication: Data Centric Consistency, Client Centric Consistency, Replica Management, Consistency Protocols. Fault tolerance and recovery: basic concepts, fault models, agreement problems and its applications, commit protocols, voting protocols, check pointing and recovery. Distributed file systems: scalable performance, load balancing, and availability. Case Studies: Dropbox, Google FS (GFS)/ Hadoop Distributed FS (HDFS), Bigtable/HBase MapReduce, RDDs, Apache Spark\nCharacteristics of a distrubuted system  No common physical clock :   inherent asynchrony amongsnt the processors.  No shared memory   so when there is no shared memory we use the message passing for communication.  Geographical separation   now (network of workstations) which is being locally connected i.e LAN . NOW is becoming popular because of its low cost and high speed.  autonomy and hetrogenity    loosely coupled , each processor will have different speeds and can run on a different operating system. They co-operate and do the work by offering services and solving a problem.\n  The distrubted software is also called as the middleware\n  A distrubuted execution is the execution of the processes across the distributed system to acheive a common goal\n  RPC - remote procedure call is the method where one machine calls a function that is residing on another machine.\n  motivation to use distrubuted systems  Inherently distributing compitation   for example bank money transfer , where they are located distrubtedly  Resource sharing Access to remote data and resources Enhanced reliabilty Increased performance / cost ratio Scalabity Modularity and incremental exandability   A multiprocessor system is a parallel system in which the multiple processors have direct access to shared memory which forms a common address space. Multiprocessor system has two architectures   UMA (uniform memory access) NUMA (non-uniform memory access)  Flyns taxonomy (Four modes)  Single instruction stream , single data stream (SISD) single CPU and single memory unit connected by a bus. Single instruction stream , multiple data stream (SIMD) Multiple instruction stream , single data stream (MISD) Multiple instruction stream , multiple data stream (MIMD)  Coupling , parallesim , concurrency and granularity   Coupling - Tightly coupled and loosely coupled Tightly coupled are homogenous i.e mostly of the same type and shared memory Loosely coupled are hetrogenous and the systems are remotely located and does not have a shared memory and does not share a common clock for example the distrubuted system ( connected by a LAN or WAN)\n  Parallelism and concurrency is similar we use concurrency in distributed systems\n  Granularity of a program ratio of the amount of computation to the amount of communication within the parallel or distrubuted system The granularity is high for tightly coupled system\n  Primitives for distributed communication  Synchronous Asynchronous Blocking Non - Blocking   Synchronous - The send () primitive completes only when it knows when the receiver() primitive is invoked Asynchronous - It is said to be asynchronous when the control returns back to invoking process. Blocking - A primitive is blocking if control returns to the invoking process after the processing for the primitive (whether in syn- chronous or asynchronous mode) completes. Non - blocking - A primitive is non-blocking if control returns back to the invoking process immediately after invocation, even though the operation has not completed.  four version for send primitive :  synchronous blocking synchronous non - blocking asynchronous blocking asynchronous non blocking  two for recv primitive :  synchronous blocking synchronous non blocking   blocking sync send ,blocking recv non-blocking sync send , non blocking recv blocking asyn send non blocking async send  Three events in the distrubuted system  internal event send event receive event The execution of process pi produces a sequence of events e1i , e2i (2nd event of the ith process) , … exi.    H = (hi - i) defines that the event is occuring an a linear order , the - i denotes the linear order.\n  Distrubuted program  processors do not share a global memory and communicate solely by message passing. it does not share a global clock hence it is asynchronous .  lamports happen before -  ei - ej here ej is directly or transitively dependent on ei . FIFO , NON - FIFO and causal ordering. causal ordering - is based on the lamports happen before relation. In causal ordering eg . send (m1) - send (m2) , in this example the recv of m1 happens before the recv of m2 even though the m2 message is sent earlier , it is stored in the buffer.  distrubuted mutual exclution  only one process is allowed to access the critical section concurrent process can access a shared resources , but kinda serialized as one can access at one time message passing  Three approches  Token based - Unique token , if they have the token with them they can access the crtical section. Non - token based - messages Quorum based - Subset  system model  N - sites asynchronous let us assume there are 5 sites , s1 s2 s3 s4 s5 , if s1 is requesting for the critical section , it waits for the reply from the other sites , during the wait period it cannot place another request to enter the critical section.  process  Request to enter the cs executing the cs release the cs   if two sites request for the critical section , it depends on the time stamp (lamports time stamp) the smallest the time stamp the higher the priority (who places the request first)  requirements of the mutual exclusion  safety property - only one process can execute liveness property - absense of deadlock (wait endlessly for msg) \u0026 starvation (indefinite wait) fairness property - if a site s1 is the sole owner of the token and is not giving the token to other process , and greedily keeps it with itself .  Performance metrics  message complexity - no of message require to execute a cs . synchronization delay - time between the (last site exits the critical section - next site enters the critical section.) response time - the time between the request message sent out and then exiting the critical section . system throughput - 1/ sd + E ; sd = sync delay , E - crtical section execution time.  Non token based for mutual exclusion - lamport algorithm  request the critical section , broadcasts the REQUEST (tsi,i) tsi - time stamp of i (the logical clock) , i is the process id , request_queue (tsi, i)  complexity of lamport  the number of REQUEST - N-1 the number of REPLY - N-1 the number of RELEASE - N-1   Total = 3(N-1)  Non token based for mutual exlusion - ricart agarwala complexity of ricart agarwala  the number of REQUEST - N-1 the number of REPLY - N-1   Total = 2(N-1) optimized than lamport algorithm as we use the deffered queue  ",
+  "wordCount" : "1189",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://akvarun.github.io/notes/exam-prep/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Varun A K",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://akvarun.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://akvarun.github.io/" accesskey="h" title="Varun A K (Alt + H)">Varun A K</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://akvarun.github.io/first" title="Memoir">
+                    <span>Memoir</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akvarun.github.io/notes/" title="Notes">
+                    <span>Notes</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://akvarun.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://akvarun.github.io/notes/">Notes</a></div>
+    <h1 class="post-title">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="distrubuted-systems---notes">Distrubuted systems - Notes<a hidden class="anchor" aria-hidden="true" href="#distrubuted-systems---notes">#</a></h1>
+<h2 id="unit-1">Unit 1<a hidden class="anchor" aria-hidden="true" href="#unit-1">#</a></h2>
+<p>A Taxonomy of Distributed Systems - Models of computation: shared memory and message
+passing systems, synchronous and asynchronous systems. Communication in Distributed Systems:
+Remote Procedure Calls, Message Oriented Communications and implementations over a simple
+distributed system.</p>
+<h2 id="unit-2">Unit 2<a hidden class="anchor" aria-hidden="true" href="#unit-2">#</a></h2>
+<p>Global state and snapshot algorithms. Logical time and event ordering, clock synchronization,
+Distributed mutual exclusion, Group based Mutual Exclusion, leader election, concurrency control,
+deadlock detection, termination detection, implementations over a simple distributed system.</p>
+<h2 id="unit-3">Unit 3<a hidden class="anchor" aria-hidden="true" href="#unit-3">#</a></h2>
+<p>Consistency and Replication: Data Centric Consistency, Client Centric Consistency, Replica
+Management, Consistency Protocols. Fault tolerance and recovery: basic concepts, fault models,
+agreement problems and its applications, commit protocols, voting protocols, check pointing and
+recovery. Distributed file systems: scalable performance, load balancing, and availability. Case Studies:
+Dropbox, Google FS (GFS)/ Hadoop Distributed FS (HDFS), Bigtable/HBase MapReduce, RDDs,
+Apache Spark</p>
+<h3 id="characteristics-of-a-distrubuted-system">Characteristics of a distrubuted system<a hidden class="anchor" aria-hidden="true" href="#characteristics-of-a-distrubuted-system">#</a></h3>
+<ol>
+<li>No common physical clock :</li>
+</ol>
+<ul>
+<li>inherent asynchrony amongsnt the processors.</li>
+</ul>
+<ol start="2">
+<li>No shared memory</li>
+</ol>
+<ul>
+<li>so when there is no shared memory we use the message passing for communication.</li>
+</ul>
+<ol start="3">
+<li>Geographical separation</li>
+</ol>
+<ul>
+<li>now (network of workstations) which is being locally connected i.e LAN . NOW is becoming popular because of its low cost and high speed.</li>
+</ul>
+<ol start="4">
+<li>autonomy and hetrogenity</li>
+</ol>
+<ul>
+<li>
+<p>loosely coupled , each processor will have different speeds and can run on a different operating system. They co-operate and do the work by offering services and solving a problem.</p>
+</li>
+<li>
+<p>The distrubted software is also called as the <strong>middleware</strong></p>
+</li>
+<li>
+<p>A distrubuted execution is the execution of the processes across the distributed system to acheive a common goal</p>
+</li>
+<li>
+<p>RPC - remote procedure call is the method where one machine calls a function that is residing on another machine.</p>
+</li>
+</ul>
+<h3 id="motivation-to-use-distrubuted-systems">motivation to use distrubuted systems<a hidden class="anchor" aria-hidden="true" href="#motivation-to-use-distrubuted-systems">#</a></h3>
+<ol>
+<li>Inherently distributing compitation</li>
+</ol>
+<ul>
+<li>for example bank money transfer , where they are located distrubtedly</li>
+</ul>
+<ol start="2">
+<li>Resource sharing</li>
+<li>Access to remote data and resources</li>
+<li>Enhanced reliabilty</li>
+<li>Increased performance / cost ratio</li>
+<li>Scalabity</li>
+<li>Modularity and incremental exandability</li>
+</ol>
+<ul>
+<li>A multiprocessor system is a parallel system in which the multiple processors have direct access to shared memory
+which forms a common address space.</li>
+<li>Multiprocessor system has two architectures</li>
+</ul>
+<ol>
+<li>UMA (uniform memory access)</li>
+<li>NUMA (non-uniform memory access)</li>
+</ol>
+<h3 id="flyns-taxonomy-four-modes">Flyns taxonomy (Four modes)<a hidden class="anchor" aria-hidden="true" href="#flyns-taxonomy-four-modes">#</a></h3>
+<ul>
+<li>Single instruction stream , single data stream (SISD)
+single CPU and single memory unit connected by a bus.</li>
+<li>Single instruction stream , multiple data stream (SIMD)</li>
+<li>Multiple instruction stream , single data stream (MISD)</li>
+<li>Multiple instruction stream , multiple data stream (MIMD)</li>
+</ul>
+<h4 id="coupling--parallesim--concurrency-and-granularity">Coupling , parallesim , concurrency and granularity<a hidden class="anchor" aria-hidden="true" href="#coupling--parallesim--concurrency-and-granularity">#</a></h4>
+<ul>
+<li>
+<p>Coupling - Tightly coupled and loosely coupled
+Tightly coupled are homogenous i.e mostly of the same type and shared memory
+<!-- raw HTML omitted -->
+Loosely coupled are hetrogenous and the systems are remotely located and does not have a shared memory and does not share a common clock for example the distrubuted system ( connected by a LAN or WAN)</p>
+</li>
+<li>
+<p>Parallelism and concurrency is similar
+we use concurrency in distributed systems</p>
+</li>
+<li>
+<p>Granularity of a program
+ratio of the amount of computation to the amount of communication within the parallel or distrubuted system
+The granularity is high for tightly coupled system</p>
+</li>
+</ul>
+<h2 id="primitives-for-distributed-communication">Primitives for distributed communication<a hidden class="anchor" aria-hidden="true" href="#primitives-for-distributed-communication">#</a></h2>
+<ol>
+<li>Synchronous</li>
+<li>Asynchronous</li>
+<li>Blocking</li>
+<li>Non - Blocking</li>
+</ol>
+<ul>
+<li>Synchronous - The send () primitive completes only when it knows when the receiver() primitive is invoked</li>
+<li>Asynchronous - It is said to be asynchronous when the control returns back to invoking process.</li>
+<li>Blocking - A primitive is blocking if control returns to the
+invoking process after the processing for the primitive (whether in syn-
+chronous or asynchronous mode) completes.</li>
+<li>Non - blocking - A primitive is non-blocking if control returns
+back to the invoking process immediately after invocation, even though
+the operation has not completed.</li>
+</ul>
+<h4 id="four-version-for-send-primitive-">four version for send primitive :<a hidden class="anchor" aria-hidden="true" href="#four-version-for-send-primitive-">#</a></h4>
+<ol>
+<li>synchronous blocking</li>
+<li>synchronous non - blocking</li>
+<li>asynchronous blocking</li>
+<li>asynchronous non blocking</li>
+</ol>
+<h4 id="two-for-recv-primitive-">two for recv primitive :<a hidden class="anchor" aria-hidden="true" href="#two-for-recv-primitive-">#</a></h4>
+<ol>
+<li>synchronous blocking</li>
+<li>synchronous non blocking</li>
+</ol>
+<ul>
+<li>blocking sync send ,blocking recv</li>
+<li>non-blocking sync send , non blocking recv</li>
+<li>blocking asyn send</li>
+<li>non blocking async send</li>
+</ul>
+<h2 id="three-events-in-the-distrubuted-system">Three events in the distrubuted system<a hidden class="anchor" aria-hidden="true" href="#three-events-in-the-distrubuted-system">#</a></h2>
+<ul>
+<li>internal event</li>
+<li>send event</li>
+<li>receive event
+The execution of process pi produces a sequence of events e1i , e2i (2nd event of the ith process) , &hellip; exi.</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>H = (hi -&gt; i) defines that the event is occuring an a linear order , the -&gt; i denotes the linear order.</p>
+</blockquote>
+</blockquote>
+<h3 id="distrubuted-program">Distrubuted program<a hidden class="anchor" aria-hidden="true" href="#distrubuted-program">#</a></h3>
+<ul>
+<li>processors do not share a global memory and communicate solely by message passing.</li>
+<li>it does not share a global clock hence it is asynchronous .</li>
+</ul>
+<h4 id="lamports-happen-before--">lamports happen before -&gt;<a hidden class="anchor" aria-hidden="true" href="#lamports-happen-before--">#</a></h4>
+<ul>
+<li>ei -&gt; ej here ej is directly or transitively dependent on ei .</li>
+<li>FIFO , NON - FIFO and causal ordering.</li>
+<li><strong>causal ordering</strong> - is based on the <em>lamports happen before relation</em>.</li>
+<li>In causal ordering eg . send (m1) -&gt; send (m2) , in this example the recv of m1 happens before the recv of m2 even though the m2 message is sent earlier , it is stored in the buffer.</li>
+</ul>
+<h3 id="distrubuted-mutual-exclution">distrubuted mutual exclution<a hidden class="anchor" aria-hidden="true" href="#distrubuted-mutual-exclution">#</a></h3>
+<ul>
+<li>only one process is allowed to access the critical section</li>
+<li>concurrent process can access a shared resources , but kinda serialized as one can access at one time</li>
+<li>message passing</li>
+</ul>
+<h5 id="three-approches">Three approches<a hidden class="anchor" aria-hidden="true" href="#three-approches">#</a></h5>
+<ol>
+<li>Token based - Unique token , if they have the token with them they can access the crtical section.</li>
+<li>Non - token based - messages</li>
+<li>Quorum based - Subset</li>
+</ol>
+<h3 id="system-model">system model<a hidden class="anchor" aria-hidden="true" href="#system-model">#</a></h3>
+<ul>
+<li>N - sites</li>
+<li>asynchronous</li>
+<li>let us assume there are 5 sites , s1 s2 s3 s4 s5 , if s1 is requesting for the critical section , it waits for the reply from the other sites , during the wait period it cannot place another request to enter the critical section.</li>
+</ul>
+<h4 id="process">process<a hidden class="anchor" aria-hidden="true" href="#process">#</a></h4>
+<ol>
+<li>Request to enter the cs</li>
+<li>executing the cs</li>
+<li>release the cs</li>
+</ol>
+<ul>
+<li>if two sites request for the critical section , it depends on the time stamp (lamports time stamp)</li>
+<li>the smallest the time stamp the higher the priority (who places the request first)</li>
+</ul>
+<h3 id="requirements-of-the-mutual-exclusion">requirements of the mutual exclusion<a hidden class="anchor" aria-hidden="true" href="#requirements-of-the-mutual-exclusion">#</a></h3>
+<ol>
+<li>safety property - only one process can execute</li>
+<li>liveness property - absense of deadlock (wait endlessly for msg) &amp; starvation (indefinite wait)</li>
+<li>fairness property - if a site s1 is the sole owner of the token and is not giving the token to other process , and greedily keeps it with itself .</li>
+</ol>
+<h3 id="performance-metrics">Performance metrics<a hidden class="anchor" aria-hidden="true" href="#performance-metrics">#</a></h3>
+<ol>
+<li>message complexity - no of message require to execute a cs .</li>
+<li>synchronization delay - time between the (last site exits the critical section - next site enters the critical section.)</li>
+<li>response time - the time between the request message sent out and then exiting the critical section .</li>
+<li>system throughput - 1/ sd + E ; sd = sync delay , E - crtical section execution time.</li>
+</ol>
+<h2 id="non-token-based--for-mutual-exclusion---lamport-algorithm">Non token based  for mutual exclusion - lamport algorithm<a hidden class="anchor" aria-hidden="true" href="#non-token-based--for-mutual-exclusion---lamport-algorithm">#</a></h2>
+<ol>
+<li>request the critical section , broadcasts the REQUEST (tsi,i) tsi - time stamp of i (the logical clock) , i is the process id , request_queue (tsi, i)</li>
+</ol>
+<h4 id="complexity-of-lamport">complexity of lamport<a hidden class="anchor" aria-hidden="true" href="#complexity-of-lamport">#</a></h4>
+<ol>
+<li>the number of REQUEST - N-1</li>
+<li>the number of REPLY - N-1</li>
+<li>the number of RELEASE - N-1</li>
+</ol>
+<ul>
+<li>Total = 3(N-1)</li>
+</ul>
+<h2 id="non-token-based-for-mutual-exlusion---ricart-agarwala">Non token based for mutual exlusion - ricart agarwala<a hidden class="anchor" aria-hidden="true" href="#non-token-based-for-mutual-exlusion---ricart-agarwala">#</a></h2>
+<h4 id="complexity-of-ricart-agarwala">complexity of ricart agarwala<a hidden class="anchor" aria-hidden="true" href="#complexity-of-ricart-agarwala">#</a></h4>
+<ol>
+<li>the number of REQUEST - N-1</li>
+<li>the number of REPLY - N-1</li>
+</ol>
+<ul>
+<li>Total = 2(N-1)
+optimized than lamport algorithm as we use the deffered queue</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://akvarun.github.io/">Varun A K</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

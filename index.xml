@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Varun A K</title>
+    <link>https://akvarun.github.io/</link>
+    <description>Recent content on Varun A K</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language><atom:link href="https://akvarun.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About me</title>
+      <link>https://akvarun.github.io/first/</link>
+      <pubDate>Fri, 14 Apr 2023 19:41:27 +0530</pubDate>
+      
+      <guid>https://akvarun.github.io/first/</guid>
+      <description>Hi, I&amp;rsquo;m Varun AK! I&amp;rsquo;m currently a student of Computer Science and Engineering, and I&amp;rsquo;m passionate about all things related to technology. From a young age, I&amp;rsquo;ve always been fascinated by how computers work and how they can be used to solve complex problems.
+During my studies, I&amp;rsquo;ve gained valuable experience in programming, web development, and database management. I&amp;rsquo;m always eager to learn new technologies and explore different areas within the field.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://akvarun.github.io/notes/exam-prep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://akvarun.github.io/notes/exam-prep/</guid>
+      <description>Distrubuted systems - Notes Unit 1 A Taxonomy of Distributed Systems - Models of computation: shared memory and message passing systems, synchronous and asynchronous systems. Communication in Distributed Systems: Remote Procedure Calls, Message Oriented Communications and implementations over a simple distributed system.
+Unit 2 Global state and snapshot algorithms. Logical time and event ordering, clock synchronization, Distributed mutual exclusion, Group based Mutual Exclusion, leader election, concurrency control, deadlock detection, termination detection, implementations over a simple distributed system.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://akvarun.github.io/notes/notes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://akvarun.github.io/notes/notes/</guid>
+      <description>Sensors and actuators  sensors - device that measures physical quantity actuators - alters the physical quantity sensors produce a voltage that is proportional to the physical quantity voltage is converted to physical value by the ADC - analog to digital converter  construct models of sensors  linearity bias dynamic range quantization noise sampling  linear and affine models  physical quantity x(t) at time t sensor value = f(x(t)) where f: R-&amp;gt; R : x(t) belongs to R every linear function is an affine function with a constant a belongs to R and bias b belongs to R f(x(t)) = ax(t) + b a linear function is an affine function (when b=0) i.</description>
+    </item>
+    
+  </channel>
+</rss>
